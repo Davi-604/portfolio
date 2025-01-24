@@ -26,7 +26,7 @@ export const MenuTrigger = () => {
 
         const section = document.getElementById(sectionId);
         if (section) {
-            setTimeout(() => section.scrollIntoView({ behavior: 'smooth' }), 500);
+            setTimeout(() => section.scrollIntoView({ behavior: 'smooth' }), 700);
         }
     };
 
