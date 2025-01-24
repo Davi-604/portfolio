@@ -24,7 +24,7 @@ export const SectionObserver = ({ id, children }: SectionProps) => {
                 }
             },
             {
-                threshold: [0.2],
+                threshold: window.innerWidth <= 768 ? [0.1] : [0.2],
             }
         );
 
