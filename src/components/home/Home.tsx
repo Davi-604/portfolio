@@ -5,23 +5,25 @@ import { DefaultButton } from '../default/DefaultButton';
 import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
+import { useState, useEffect } from 'react';
 
 export const Home = () => {
-    const { currentSection, setCurrentSection } = useSectionStore();
+    const { currentSection } = useSectionStore();
+    const [hasAnimated, setHasAnimated] = useState(false);
 
-    const handleOpenResume = () => {
-        window.open(
-            'https://drive.google.com/file/d/1rTIQmBKhmLy78hIur4bVclZek3bpM0Jj/view?usp=sharing'
-        );
-    };
+    useEffect(() => {
+        if (currentSection === 'home' && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [currentSection, hasAnimated]);
 
     return (
         <AnimatedBackground>
-            <div className="flex flex-col p-3 mt-5 lg:flex-row lg:items-start lg:mt-5">
+            <div className="flex flex-col p-3 mt-5 min-h-screen lg:flex-row lg:items-start lg:mt-5">
                 <div className="mb-10 lg:mr-10">
                     <motion.div
                         initial="hidden"
-                        animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={fadeInUp}
                     >
                         <h3 className="text-xl font-bold text-blue-900 dark:text-blue-600 lg:text-3xl">
@@ -33,9 +35,9 @@ export const Home = () => {
                     </motion.div>
                     <motion.div
                         initial="hidden"
-                        animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={slowFadeInLeft}
-                        className=" font-bold mt-1 lg:text-4xl"
+                        className="font-bold mt-1 lg:text-4xl"
                     >
                         <Typewriter
                             words={[
@@ -54,12 +56,16 @@ export const Home = () => {
                     </motion.div>
                     <motion.div
                         initial="hidden"
-                        animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={slowFadeInLeft}
                         className="mt-32 hidden lg:block"
                     >
                         <DefaultButton
-                            onClick={handleOpenResume}
+                            onClick={() =>
+                                window.open(
+                                    'https://drive.google.com/file/d/1rTIQmBKhmLy78hIur4bVclZek3bpM0Jj/view?usp=sharing'
+                                )
+                            }
                             label="Confira meu currículo"
                             Icon={FileUserIcon}
                         />
@@ -68,7 +74,7 @@ export const Home = () => {
                 <div className="flex flex-1 flex-col items-center justify-center">
                     <motion.div
                         initial="hidden"
-                        animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={fadeInUp}
                         style={{
                             backgroundImage: 'url("images/me.jpg")',
@@ -80,7 +86,7 @@ export const Home = () => {
                     ></motion.div>
                     <motion.div
                         initial="hidden"
-                        animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={slowFadeInLeft}
                         className="text-left text-2xl mt-5 text-secondary-foreground font-bold lg:text-4xl"
                     >
@@ -94,12 +100,16 @@ export const Home = () => {
                 </div>
                 <motion.div
                     initial="hidden"
-                    animate={currentSection === 'home' ? 'visible' : 'hidden'}
+                    animate={hasAnimated ? 'visible' : ''}
                     variants={slowFadeInRight}
                     className="mt-10 text-center lg:hidden"
                 >
                     <DefaultButton
-                        onClick={handleOpenResume}
+                        onClick={() =>
+                            window.open(
+                                'https://drive.google.com/file/d/1rTIQmBKhmLy78hIur4bVclZek3bpM0Jj/view?usp=sharing'
+                            )
+                        }
                         label="Confira meu currículo"
                         Icon={FileUserIcon}
                     />

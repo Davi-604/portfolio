@@ -10,15 +10,23 @@ import {
     slowFadeInLeft,
     slowFadeInRight,
 } from '@/animations/fadeIn';
+import { useEffect, useState } from 'react';
 
 export const Projects = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+        if (currentSection === 'projects' && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [currentSection, hasAnimated]);
 
     return (
-        <div className="px-3 py-10 flex flex-col items-center">
+        <div className="px-3 py-10 min-h-screen flex flex-col items-center">
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'projects' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={fadeInUp}
             >
                 <DefaultSectionTittle label="Projetos" Icon={LuMonitorCog} />
@@ -28,7 +36,7 @@ export const Projects = () => {
                     <motion.div
                         key={index}
                         initial="hidden"
-                        animate={currentSection === 'projects' ? 'visible' : 'hidden'}
+                        animate={hasAnimated ? 'visible' : ''}
                         variants={slowFadeInRight}
                     >
                         <ProjectDialog project={pjt} />

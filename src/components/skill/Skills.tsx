@@ -5,15 +5,23 @@ import { LuChartNetwork } from 'react-icons/lu';
 import { DefaultSectionTittle } from '../default/DefaultSectionTittle';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { fadeInDown, fadeInUp, slowFadeInLeft } from '@/animations/fadeIn';
+import { useEffect, useState } from 'react';
 
 export const Skills = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+        if (currentSection === 'skills' && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [currentSection, hasAnimated]);
 
     return (
-        <div className="px-3 py-10 bg-primary-foreground flex flex-col items-center overflow-y-hidden">
+        <div className="px-3 py-10 bg-primary-foreground min-h-screen flex flex-col items-center overflow-y-hidden">
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={fadeInUp}
             >
                 <DefaultSectionTittle label="Habilidades" Icon={LuChartNetwork} />
@@ -21,7 +29,7 @@ export const Skills = () => {
 
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={slowFadeInLeft}
                 className="mt-10 text-xl text-left pb-2 border-b-4 inline-block border-muted-foreground"
             >
@@ -33,7 +41,7 @@ export const Skills = () => {
                     .map((skill, index) => (
                         <motion.div
                             initial="hidden"
-                            animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                            animate={hasAnimated ? 'visible' : ''}
                             variants={slowFadeInLeft}
                             className="flex"
                             key={index}
@@ -44,7 +52,7 @@ export const Skills = () => {
             </div>
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={slowFadeInLeft}
                 className="mt-10 text-xl text-left pb-2 border-b-4 inline-block border-muted-foreground"
             >
@@ -56,7 +64,7 @@ export const Skills = () => {
                     .map((skill, index) => (
                         <motion.div
                             initial="hidden"
-                            animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                            animate={hasAnimated ? 'visible' : ''}
                             variants={slowFadeInLeft}
                             className="flex"
                             key={index}
@@ -67,7 +75,7 @@ export const Skills = () => {
             </div>
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={slowFadeInLeft}
                 className="mt-10 text-xl text-left pb-2 border-b-4 inline-block border-muted-foreground"
             >
@@ -79,7 +87,7 @@ export const Skills = () => {
                     .map((skill, index) => (
                         <motion.div
                             initial="hidden"
-                            animate={currentSection === 'skills' ? 'visible' : 'hidden'}
+                            animate={hasAnimated ? 'visible' : ''}
                             variants={slowFadeInLeft}
                             className="flex"
                             key={index}

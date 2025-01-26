@@ -3,15 +3,23 @@ import { DefaultSectionTittle } from '../default/DefaultSectionTittle';
 import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
+import { useEffect, useState } from 'react';
 
 export const About = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+        if (currentSection === 'about' && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [currentSection, hasAnimated]);
 
     return (
-        <div className="px-3 py-10 bg-muted flex flex-col items-center">
+        <div className="px-3 py-10 bg-muted min-h-screen flex flex-col items-center">
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'about' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={fadeInUp}
             >
                 <DefaultSectionTittle label="Sobre mim" Icon={LuUserSearch} />
@@ -19,9 +27,9 @@ export const About = () => {
 
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'about' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={slowFadeInLeft}
-                className="mt-5 text-lg text-muted-foreground inline-block lg:mt-10 lg:max-w-[1100px] lg:text-xl"
+                className="mt-16 text-lg text-muted-foreground inline-block lg:mt-20 lg:max-w-[1100px] lg:text-xl"
             >
                 Olá, eu me chamo Davi Carvalho e sou um programador Full-stack que gosta
                 muito do que faz. Tenho 18 anos e estudo programação há cerca de 2 anos.

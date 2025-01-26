@@ -13,7 +13,7 @@ import { AnimatePresence } from 'framer-motion';
 
 export const MainContainer = () => {
     useEffect(() => {
-        window.history.scrollRestoration = 'manual'; // Evita conflitos de scroll
+        window.history.scrollRestoration = 'manual';
     }, []);
 
     return (

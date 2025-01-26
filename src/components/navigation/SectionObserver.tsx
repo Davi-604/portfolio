@@ -16,15 +16,18 @@ export const SectionObserver = ({ id, children }: SectionProps) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setCurrentSection(id);
-                    setIsVisible(true);
-                } else {
-                    setIsVisible(false);
-                }
+                setTimeout(() => {
+                    if (entry.isIntersecting) {
+                        setCurrentSection(id);
+                        setIsVisible(true);
+                    } else {
+                        setIsVisible(false);
+                    }
+                }, 100);
             },
             {
-                threshold: window.innerWidth <= 768 ? [0.1] : [0.2],
+                threshold: window.innerWidth <= 768 ? 0.1 : 0.2,
+                rootMargin: '0px 0px -20% 0px',
             }
         );
 
@@ -38,22 +41,6 @@ export const SectionObserver = ({ id, children }: SectionProps) => {
             }
         };
     }, [id, setCurrentSection]);
-
-    const animatedChildren = React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
-            return (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isVisible ? 1 : 0.2 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    {child}
-                </motion.div>
-            );
-        }
-
-        return child;
-    });
 
     return (
         <section id={id} ref={sectionRef}>

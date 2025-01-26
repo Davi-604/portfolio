@@ -5,15 +5,23 @@ import { SocialMediaArea } from './SocialMediaArea';
 import { motion } from 'framer-motion';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
+import { useEffect, useState } from 'react';
 
 export const Contact = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+        if (currentSection === 'contact' && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [currentSection, hasAnimated]);
 
     return (
         <div className="px-3 py-10 flex flex-col items-center bg-background">
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'contact' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={fadeInUp}
             >
                 <DefaultSectionTittle label="Contato" Icon={LuContact} />
@@ -22,14 +30,14 @@ export const Contact = () => {
                 <motion.div
                     className="flex-1"
                     initial="hidden"
-                    animate={currentSection === 'contact' ? 'visible' : 'hidden'}
+                    animate={hasAnimated ? 'visible' : ''}
                     variants={slowFadeInLeft}
                 >
                     <MessageArea />
                 </motion.div>
                 <motion.div
                     initial="hidden"
-                    animate={currentSection === 'contact' ? 'visible' : 'hidden'}
+                    animate={hasAnimated ? 'visible' : ''}
                     variants={slowFadeInRight}
                 >
                     <SocialMediaArea />
@@ -37,7 +45,7 @@ export const Contact = () => {
             </div>
             <motion.div
                 initial="hidden"
-                animate={currentSection === 'contact' ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : ''}
                 variants={fadeInUp}
                 className="mt-16 text-muted-foreground"
             >
