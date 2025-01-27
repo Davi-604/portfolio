@@ -33,6 +33,6 @@ Este projeto tem o intuito de demonstrar quem eu sou como um programador mostran
     Confira o portfólio
 </a>
 <br/><br/>
-<a href="https://github.com/Davi-604/Japa-zap-static" target='_blank'>
+<a href="https://www.linkedin.com/posts/davicarvalhodev604_programacao-fullstack-portfolio-activity-7289701850570747904-XJ1w?utm_source=share&utm_medium=member_desktop" target='_blank'>
     Postagem no LinkedIn
 </a>
