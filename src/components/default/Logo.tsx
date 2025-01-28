@@ -13,7 +13,7 @@ export const Logo = () => {
                 <span className="text-blue-500 animate-pulse">.dev</span>
             </p>
             <span>
-                <Code2Icon className="w-30px h-30px md:w-[50px] md:h-[50px]" />
+                <Code2Icon className="w-30px h-30px md:size-[50px]" />
             </span>
         </div>
     );

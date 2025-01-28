@@ -8,7 +8,7 @@ export const AnimatedBackground = ({ children }: { children: React.ReactNode }) 
     const icons = [...skills, ...skills];
 
     return (
-        <div className="relative w-full h-full lg:h-[calc(100vh-100px)] bg-blue-400 dark:bg-slate-950 overflow-hidden">
+        <div className="relative w-full h-full lg:h-[calc(100vh-90px)] bg-blue-400 dark:bg-slate-950 overflow-hidden">
             <div className="absolute inset-0">
                 {Array.from({ length: rows }).map((_, rowIndex) => (
                     <div key={rowIndex}>

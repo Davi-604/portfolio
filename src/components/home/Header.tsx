@@ -21,12 +21,20 @@ export const Header = () => {
     };
 
     return (
-        <header className=" bg-blue-950 text-white ">
+        <header
+            className={`bg-blue-950 text-white fixed top-0 left-0 right-0 z-50 lg:static`}
+        >
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={slowFadeInLeft}
-                className="flex items-center p-3 h-[100px]"
+                className={`flex items-center transition-all ease-in`}
+                style={{
+                    padding:
+                        currentSection != 'home' && window.innerWidth < 768
+                            ? '10px'
+                            : '20px',
+                }}
             >
                 <div className="flex-1 lg:flex-none">
                     <Logo />

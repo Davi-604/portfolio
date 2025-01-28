@@ -19,7 +19,7 @@ export const Home = () => {
 
     return (
         <AnimatedBackground>
-            <div className="flex flex-col p-3 mt-5 min-h-screen lg:flex-row lg:items-start lg:mt-5">
+            <div className="flex flex-col p-3 mt-[100px] lg:mt-10 lg:flex-row lg:items-start lg:p-5">
                 <div className="mb-10 lg:mr-10">
                     <motion.div
                         initial="hidden"

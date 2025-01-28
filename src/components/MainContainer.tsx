@@ -19,9 +19,11 @@ export const MainContainer = () => {
     return (
         <AnimatePresence mode="wait">
             <main className="flex flex-col h-full overflow-hidden">
-                <Header />
                 <SectionObserver id="home">
-                    <Home />
+                    <div className="min-h-screen">
+                        <Header />
+                        <Home />
+                    </div>
                 </SectionObserver>
                 <SectionObserver id="about">
                     <About />

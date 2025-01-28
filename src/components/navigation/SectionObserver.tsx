@@ -26,7 +26,7 @@ export const SectionObserver = ({ id, children }: SectionProps) => {
                 }, 100);
             },
             {
-                threshold: window.innerWidth <= 768 ? 0.1 : 0.2,
+                threshold: window.innerWidth <= 768 ? 0.1 : [0.2, 1],
                 rootMargin: '0px 0px -20% 0px',
             }
         );
