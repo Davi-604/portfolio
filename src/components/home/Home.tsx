@@ -63,7 +63,7 @@ export const Home = () => {
                         <DefaultButton
                             onClick={() =>
                                 window.open(
-                                    'https://drive.google.com/file/d/1IRlWwbLTGu2fSXGrDz9pWErq-ZUp31Dd/view?usp=drive_link'
+                                    'https://drive.google.com/file/d/1PYN9GmhdDRIBxPM7oyApFdK70VqE5yIE/view?usp=sharing'
                                 )
                             }
                             label="Confira meu currículo"
