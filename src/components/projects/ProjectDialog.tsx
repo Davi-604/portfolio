@@ -21,7 +21,7 @@ export const ProjectDialog = ({ project }: Props) => {
             <DialogTrigger>
                 <ProjectCard project={project} />
             </DialogTrigger>
-            <DialogContent className="border-none p-0 lg:max-w-3xl ">
+            <DialogContent className="border-none p-0 lg:max-w-3xl overflow-y-scroll h-full">
                 <img
                     className="w-full h-[150px] object-cover rounded-lg lg:h-[300px] md:h-[200px]"
                     src={project.thumbUrl}
