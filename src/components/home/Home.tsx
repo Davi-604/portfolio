@@ -6,11 +6,8 @@ import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 export const Home = () => {
-    const router = useRouter();
-
     const { currentSection } = useSectionStore();
     const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -65,7 +62,7 @@ export const Home = () => {
                     >
                         <DefaultButton
                             onClick={() =>
-                                router.push(
+                                window.open(
                                     'https://drive.google.com/file/d/1GKq1XVzfmoiT_yaqKF8SmFCQA0eSJp1Q/view?usp=drive_link'
                                 )
                             }
@@ -110,7 +107,7 @@ export const Home = () => {
                     <DefaultButton
                         onClick={() =>
                             window.open(
-                                'https://drive.google.com/file/d/1rTIQmBKhmLy78hIur4bVclZek3bpM0Jj/view?usp=sharing'
+                                'https://drive.google.com/file/d/1GKq1XVzfmoiT_yaqKF8SmFCQA0eSJp1Q/view?usp=drive_link'
                             )
                         }
                         label="Confira meu currículo"
