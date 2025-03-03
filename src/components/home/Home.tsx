@@ -6,8 +6,11 @@ import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const Home = () => {
+    const router = useRouter();
+
     const { currentSection } = useSectionStore();
     const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -62,7 +65,7 @@ export const Home = () => {
                     >
                         <DefaultButton
                             onClick={() =>
-                                window.open(
+                                router.push(
                                     'https://drive.google.com/file/d/1GKq1XVzfmoiT_yaqKF8SmFCQA0eSJp1Q/view?usp=drive_link'
                                 )
                             }
