@@ -1,6 +1,8 @@
 import { Project } from '@/types/Project';
 import { SkillFlag } from '../skill/SkillFlag';
 import { motion } from 'framer-motion';
+import { DefaultButton } from '../default/DefaultButton';
+import { Button } from '../ui/button';
 
 type Props = {
     project: Project;
@@ -24,6 +26,7 @@ export const ProjectCard = ({ project }: Props) => {
         hover:scale-105 hover:border-secondary-foreground transition-all ease-in"
         >
             <img
+                loading="lazy"
                 className="w-[300px] h-[150px] object-cover rounded-lg lg:w-full lg:h-[240px]"
                 src={project.thumbUrl}
             />
@@ -44,6 +47,14 @@ export const ProjectCard = ({ project }: Props) => {
                         <SkillFlag key={`clone-${index}`} skill={skill} />
                     ))}
                 </motion.div>
+            </div>
+            <div className="w-full my-3 max-w-[250px] mx-auto">
+                <Button
+                    variant="secondary"
+                    className="flex w-full h-full text-xl font-semibold lg:text-2xl"
+                >
+                    Ver projeto
+                </Button>
             </div>
         </div>
     );

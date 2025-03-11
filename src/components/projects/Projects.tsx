@@ -31,7 +31,7 @@ export const Projects = () => {
             >
                 <DefaultSectionTittle label="Projetos" Icon={LuMonitorCog} />
             </motion.div>
-            <div className="mt-10 flex flex-wrap justify-center max-w-[1100px] gap-5">
+            <div className="mt-10 flex flex-wrap items-center justify-center max-w-[1100px] gap-5">
                 {projects.map((pjt, index) => (
                     <motion.div
                         key={index}
