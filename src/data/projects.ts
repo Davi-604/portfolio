@@ -24,6 +24,8 @@ export const projects: Project[] = [
         desc: 'Projeto Full-stack que consiste em um Marketplace e página de apresentação para a confeitaria "Sobremesas da Paty". Além disso o projeto também contém um painel administrativo exclusivo para o gerente da loja. Este projeto se trata de um projeto comercial que foi desenvolvido visando atender aos interesses do cliente.',
         thumbUrl: 'images/sobremesas-paty.png',
         gitHubUrl: 'https://github.com/Davi-604/sobremesas-da-paty',
+        linkedinUrl:
+            'https://www.linkedin.com/posts/davicarvalhodev604_projeto-freela-freelancer-activity-7305670951659008000-Qqr6?utm_source=share&utm_medium=member_desktop&rcm=ACoAADrnwZMBjPEGJz5FK4z3bBSeod-jlgEpy50',
         webUrl: 'https://www.sobremesasdapaty.com/',
         usedSkills: [
             {

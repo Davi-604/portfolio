@@ -35,7 +35,7 @@ export const Skills = () => {
             >
                 Tecnologias de front-end
             </motion.div>
-            <div className="flex flex-wrap justify-center mt-7 max-w-[1100px] gap-5">
+            <div className="grid grid-cols-2  mt-7 max-w-[1100px] gap-5 md:grid-cols-3 lg:grid-cols-4">
                 {skills
                     .filter((skill) => skill.role === 'frontend')
                     .map((skill, index) => (
@@ -58,7 +58,7 @@ export const Skills = () => {
             >
                 Tecnologias de back-end
             </motion.div>
-            <div className="flex flex-wrap justify-center mt-7 max-w-[1100px] gap-5">
+            <div className="grid grid-cols-2 mt-7 max-w-[1100px] gap-5 md:grid-cols-3 lg:grid-cols-4">
                 {skills
                     .filter((skill) => skill.role === 'backend')
                     .map((skill, index) => (
@@ -81,7 +81,7 @@ export const Skills = () => {
             >
                 Habilidades coorporativas
             </motion.div>
-            <div className="flex flex-wrap justify-center mt-7 max-w-[1100px] gap-5">
+            <div className="grid grid-cols-2  mt-7 max-w-[1100px] gap-5 md:grid-cols-3 lg:grid-cols-4">
                 {skills
                     .filter((skill) => skill.role === 'corporate')
                     .map((skill, index) => (

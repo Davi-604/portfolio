@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { useState, useEffect } from 'react';
+import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
 
 export const Home = () => {
     const { currentSection } = useSectionStore();
@@ -114,6 +115,9 @@ export const Home = () => {
                         Icon={FileUserIcon}
                     />
                 </motion.div>
+                <div className="mx-auto mt-10 mb-5 lg:hidden">
+                    <MdKeyboardDoubleArrowDown className="animate-bounce" size={84} />
+                </div>
             </div>
         </AnimatedBackground>
     );

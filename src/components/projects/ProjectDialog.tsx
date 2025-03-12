@@ -10,15 +10,45 @@ import { ProjectCard } from './ProjectCard';
 import { SkillFlag } from '../skill/SkillFlag';
 import { DefaultLinkButton } from '../default/DefaultLinkBtn';
 import { IoWarning } from 'react-icons/io5';
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Props = {
     project: Project;
 };
 
 export const ProjectDialog = ({ project }: Props) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            window.history.pushState(
+                { dialogOpen: true },
+                '',
+                `${window.location.pathname}?dialog=open`
+            );
+        } else {
+            if (window.history.state && window.history.state.dialogOpen) {
+                window.history.back();
+            }
+        }
+
+        const handlePopState = () => {
+            if (isOpen) {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [isOpen]);
+
     return (
-        <Dialog>
-            <DialogTrigger>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger onClick={() => setIsOpen(true)}>
                 <ProjectCard project={project} />
             </DialogTrigger>
             <DialogContent className="border-none p-0 lg:max-w-3xl overflow-y-scroll h-full">
