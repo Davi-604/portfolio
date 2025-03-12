@@ -9,8 +9,15 @@ import { useState, useEffect } from 'react';
 import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
 
 export const Home = () => {
-    const { currentSection } = useSectionStore();
+    const { currentSection, setCurrentSection } = useSectionStore();
     const [hasAnimated, setHasAnimated] = useState(false);
+
+    const handleScrollToNextSection = () => {
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     useEffect(() => {
         if (currentSection === 'home' && !hasAnimated) {
@@ -115,7 +122,10 @@ export const Home = () => {
                         Icon={FileUserIcon}
                     />
                 </motion.div>
-                <div className="mx-auto mt-10 mb-5 lg:hidden">
+                <div
+                    className="mx-auto mt-10 mb-5 lg:hidden"
+                    onClick={() => handleScrollToNextSection()}
+                >
                     <MdKeyboardDoubleArrowDown className="animate-bounce" size={84} />
                 </div>
             </div>
