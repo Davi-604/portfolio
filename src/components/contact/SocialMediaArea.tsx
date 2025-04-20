@@ -28,12 +28,6 @@ export const SocialMediaArea = () => {
                 Icon={LuPhone}
                 url="https://wa.me/5534991122454?text=Olá%2C%20gostei%20do%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho!"
             />
-
-            <SocialMediaItem
-                label="Uberaba, Brasil - MG"
-                Icon={LuMapPin}
-                url="https://maps.app.goo.gl/jQ2QfWqrdMed46p88"
-            />
         </div>
     );
 };
