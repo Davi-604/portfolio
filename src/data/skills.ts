@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fa';
 import { RiSpeakLine } from 'react-icons/ri';
 import {
+    SiDocker,
     SiMysql,
     SiNextdotjs,
     SiPostgresql,
@@ -128,27 +129,35 @@ export const skills: Skill[] = [
     },
     {
         id: 14,
+        label: 'Docker',
+        iconColor: '#2496ed',
+        Icon: SiDocker,
+        desc: 'Plataforma de desenvolvimento e execução de aplicações em containers.',
+        role: 'backend',
+    },
+    {
+        id: 15,
         label: 'Flexibilidade',
         Icon: BsPersonUp,
         desc: 'Capacidade de me adaptar em diferentes situações e desafios.',
         role: 'corporate',
     },
     {
-        id: 15,
+        id: 16,
         label: 'Trabalho em equipe',
         Icon: FaHandshake,
         desc: 'Apto para colaborar e trabalhar bem com outros, buscando sempre um ambiente de trabalho saúdável.',
         role: 'corporate',
     },
     {
-        id: 16,
+        id: 17,
         label: 'Compromisso',
         Icon: FaUserTie,
         desc: 'Dedicado e responsável com os objetivos e prazos demandados.',
         role: 'corporate',
     },
     {
-        id: 17,
+        id: 18,
         label: 'Comunicação',
         Icon: RiSpeakLine,
         desc: 'Claro e eficiente ao compartilhar ideias e informações para os clientes ou colegas de trabalho.',
