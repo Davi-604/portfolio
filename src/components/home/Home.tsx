@@ -1,12 +1,12 @@
-import { Typewriter } from 'react-simple-typewriter';
-import { FileUserIcon } from 'lucide-react';
-import { AnimatedBackground } from './AnimatedBackground';
-import { DefaultButton } from '../default/DefaultButton';
-import { motion } from 'framer-motion';
 import { fadeInUp, slowFadeInLeft, slowFadeInRight } from '@/animations/fadeIn';
 import { useSectionStore } from '@/stores/useSectionStore';
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FileUserIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
+import { Typewriter } from 'react-simple-typewriter';
+import { DefaultButton } from '../default/DefaultButton';
+import { AnimatedBackground } from './AnimatedBackground';
 
 export const Home = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
@@ -71,7 +71,7 @@ export const Home = () => {
                         <DefaultButton
                             onClick={() =>
                                 window.open(
-                                    'https://drive.google.com/file/d/1nbCO5XnyFR4OihzVlw3uRtDmPRUQFbrp/view?usp=sharing'
+                                    'https://drive.google.com/file/d/13Yb4nZRmZYxupst3RNVDL29yyTdk5b5d/view?usp=sharing'
                                 )
                             }
                             label="Confira meu currículo"
@@ -115,7 +115,7 @@ export const Home = () => {
                     <DefaultButton
                         onClick={() =>
                             window.open(
-                                'https://drive.google.com/file/d/1nbCO5XnyFR4OihzVlw3uRtDmPRUQFbrp/view?usp=sharing'
+                                'https://drive.google.com/file/d/13Yb4nZRmZYxupst3RNVDL29yyTdk5b5d/view?usp=sharing'
                             )
                         }
                         label="Confira meu currículo"
