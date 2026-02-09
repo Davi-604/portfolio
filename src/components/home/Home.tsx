@@ -27,17 +27,17 @@ export const Home = () => {
 
     return (
         <AnimatedBackground>
-            <div className="flex flex-col p-3 mt-[100px] lg:mt-10 lg:flex-row lg:items-start lg:p-5">
+            <div className="flex flex-col p-3 mt-[100px] lg:mt-10 lg:flex-row lg:items-center lg:p-5 lg:gap-10">
                 <div className="mb-10 lg:mr-10">
                     <motion.div
                         initial="hidden"
                         animate={hasAnimated ? 'visible' : ''}
                         variants={fadeInUp}
                     >
-                        <h3 className="text-xl font-bold text-blue-900 dark:text-blue-600 lg:text-3xl">
+                        <h3 className="text-xl text-center mb-5 font-bold text-blue-900 dark:text-blue-600 lg:text-3xl lg:text-left">
                             Quem sou eu?
                         </h3>
-                        <h1 className="text-5xl font-bold mt-2 text-blue-800 lg:text-8xl">
+                        <h1 className="text-5xl font-bold mt-2 text-blue-800 md:text-center lg:text-8xl lg:text-left">
                             Davi Carvalho
                         </h1>
                     </motion.div>
@@ -45,7 +45,7 @@ export const Home = () => {
                         initial="hidden"
                         animate={hasAnimated ? 'visible' : ''}
                         variants={slowFadeInLeft}
-                        className="font-bold mt-1 lg:text-4xl"
+                        className="font-bold mt-1 md:text-center lg:text-4xl lg:text-left"
                     >
                         <Typewriter
                             words={[
@@ -80,18 +80,6 @@ export const Home = () => {
                     </motion.div>
                 </div>
                 <div className="flex flex-1 flex-col items-center justify-center">
-                    <motion.div
-                        initial="hidden"
-                        animate={hasAnimated ? 'visible' : ''}
-                        variants={fadeInUp}
-                        style={{
-                            backgroundImage: 'url("images/me.jpg")',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            backgroundSize: 'contain',
-                        }}
-                        className="mx-auto w-[200px] h-[200px] rounded-full border-8 border-blue-900 lg:w-[350px] lg:h-[350px]"
-                    ></motion.div>
                     <motion.div
                         initial="hidden"
                         animate={hasAnimated ? 'visible' : ''}
