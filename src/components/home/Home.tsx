@@ -71,7 +71,7 @@ export const Home = () => {
                         <DefaultButton
                             onClick={() =>
                                 window.open(
-                                    'https://drive.google.com/file/d/1QaTbQWwxYWYsL9Tyon_8VNB4PuEMZ7c4/view?usp=sharing'
+                                    'https://drive.google.com/file/d/1v95ArLUPhvC-qjabiGq9C4-Hcy0DU-Y4/view?usp=sharing'
                                 )
                             }
                             label="Confira meu currículo"
@@ -103,7 +103,7 @@ export const Home = () => {
                     <DefaultButton
                         onClick={() =>
                             window.open(
-                                'https://drive.google.com/file/d/1QaTbQWwxYWYsL9Tyon_8VNB4PuEMZ7c4/view?usp=sharing'
+                                'https://drive.google.com/file/d/1v95ArLUPhvC-qjabiGq9C4-Hcy0DU-Y4/view?usp=sharing'
                             )
                         }
                         label="Confira meu currículo"
