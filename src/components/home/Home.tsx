@@ -2,9 +2,8 @@
 
 import { useSectionStore } from '@/stores/useSectionStore';
 import { motion } from 'framer-motion';
-import { ArrowDown, FileUser, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, FileUser, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,20 +17,12 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
-};
-
-const floatVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.8, ease: 'easeOut' },
+        filter: 'blur(0px)',
+        transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
     },
 };
 
@@ -63,13 +54,13 @@ export const Home = () => {
             {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 {/* Gradient Orbs */}
-                <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
-                <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-primary/15 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl animate-pulse-glow" />
+                <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/5 rounded-full blur-3xl" />
                 
                 {/* Grid Pattern */}
                 <div 
-                    className="absolute inset-0 opacity-[0.03]"
+                    className="absolute inset-0 opacity-[0.02]"
                     style={{
                         backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
                                          linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
@@ -83,120 +74,95 @@ export const Home = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate={hasAnimated ? 'visible' : 'hidden'}
-                    className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
+                    className="flex flex-col items-center text-center max-w-4xl mx-auto"
                 >
-                    {/* Left Content */}
-                    <div className="flex-1 text-center lg:text-left max-w-2xl">
-                        <motion.div variants={itemVariants} className="mb-6">
-                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-primary">
-                                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                                Disponivel para novos projetos
-                            </span>
-                        </motion.div>
+                    <motion.div variants={itemVariants} className="mb-8">
+                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full acrylic text-sm font-medium text-primary">
+                            <Sparkles className="w-4 h-4" />
+                            Disponivel para novos projetos
+                        </span>
+                    </motion.div>
 
-                        <motion.h1
-                            variants={itemVariants}
-                            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6"
-                        >
-                            <span className="text-foreground">Ola, eu sou</span>
-                            <br />
-                            <span className="text-gradient">Davi Carvalho</span>
-                        </motion.h1>
+                    <motion.h1
+                        variants={itemVariants}
+                        className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-8"
+                    >
+                        <span className="text-foreground">Ola, eu sou</span>
+                        <br />
+                        <span className="text-gradient">Davi Carvalho</span>
+                    </motion.h1>
 
-                        <motion.p
-                            variants={itemVariants}
-                            className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
-                        >
-                            Desenvolvedor Full-Stack especializado em criar 
-                            <span className="text-foreground font-medium"> solucoes digitais modernas</span>, 
-                            performaticas e escalaveis que transformam ideias em realidade.
-                        </motion.p>
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-10 max-w-2xl"
+                    >
+                        Desenvolvedor Full-Stack especializado em criar 
+                        <span className="text-foreground font-medium"> solucoes digitais modernas</span>, 
+                        performaticas e escalaveis que transformam ideias em realidade.
+                    </motion.p>
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-10"
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex flex-col sm:flex-row items-center gap-4 mb-12"
+                    >
+                        <button
+                            onClick={() => handleScrollToSection('projects')}
+                            className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 w-full sm:w-auto"
                         >
-                            <button
-                                onClick={() => handleScrollToSection('projects')}
-                                className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 w-full sm:w-auto"
-                            >
-                                <span className="relative z-10">Ver projetos</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-400 to-primary bg-[length:200%_100%] animate-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </button>
-                            <button
-                                onClick={() => handleScrollToSection('contact')}
-                                className="px-8 py-4 glass font-semibold rounded-xl transition-all duration-300 hover:bg-secondary/80 hover:-translate-y-0.5 w-full sm:w-auto"
-                            >
-                                Entrar em contato
-                            </button>
-                        </motion.div>
+                            <span className="relative z-10">Ver projetos</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-500 bg-[length:200%_100%] animate-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </button>
+                        <button
+                            onClick={() => handleScrollToSection('contact')}
+                            className="px-8 py-4 acrylic acrylic-hover font-semibold rounded-xl w-full sm:w-auto"
+                        >
+                            Entrar em contato
+                        </button>
+                    </motion.div>
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="flex items-center gap-4 justify-center lg:justify-start"
-                        >
-                            {socialLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-3 rounded-xl glass text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
-                                    aria-label={link.label}
-                                >
-                                    <link.icon className="w-5 h-5" />
-                                </a>
-                            ))}
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex items-center gap-4"
+                    >
+                        {socialLinks.map((link) => (
                             <a
-                                href="https://drive.google.com/file/d/1v95ArLUPhvC-qjabiGq9C4-Hcy0DU-Y4/view?usp=sharing"
+                                key={link.label}
+                                href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-4 py-3 rounded-xl glass text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+                                className="p-3 rounded-xl acrylic acrylic-hover text-muted-foreground hover:text-primary"
+                                aria-label={link.label}
                             >
-                                <FileUser className="w-5 h-5" />
-                                <span className="text-sm font-medium">Curriculo</span>
+                                <link.icon className="w-5 h-5" />
                             </a>
-                        </motion.div>
-                    </div>
+                        ))}
+                        <a
+                            href="https://drive.google.com/file/d/1v95ArLUPhvC-qjabiGq9C4-Hcy0DU-Y4/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-3 rounded-xl acrylic acrylic-hover text-muted-foreground hover:text-primary"
+                        >
+                            <FileUser className="w-5 h-5" />
+                            <span className="text-sm font-medium">Curriculo</span>
+                        </a>
+                    </motion.div>
 
-                    {/* Right Content - Profile Image */}
+                    {/* Stats */}
                     <motion.div
-                        variants={floatVariants}
-                        className="relative"
+                        variants={itemVariants}
+                        className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-border/30"
                     >
-                        <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-                            {/* Glow behind image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-emerald-500/30 rounded-full blur-2xl scale-110" />
-                            
-                            {/* Main image container */}
-                            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                                <Image
-                                    src="/images/me.jpg"
-                                    alt="Davi Carvalho - Desenvolvedor Full-Stack"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                            </div>
-
-                            {/* Floating badges */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={hasAnimated ? { opacity: 1, scale: 1 } : {}}
-                                transition={{ delay: 0.8, duration: 0.5 }}
-                                className="absolute -top-4 -right-4 px-4 py-2 glass-strong rounded-xl shadow-lg"
-                            >
-                                <span className="text-sm font-semibold text-primary">Full-Stack</span>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={hasAnimated ? { opacity: 1, scale: 1 } : {}}
-                                transition={{ delay: 1, duration: 0.5 }}
-                                className="absolute -bottom-2 -left-4 px-4 py-2 glass-strong rounded-xl shadow-lg"
-                            >
-                                <span className="text-sm font-semibold text-foreground">+5 Projetos</span>
-                            </motion.div>
+                        <div className="text-center">
+                            <div className="text-3xl sm:text-4xl font-bold text-foreground">5+</div>
+                            <div className="text-sm text-muted-foreground mt-1">Projetos</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl sm:text-4xl font-bold text-foreground">2+</div>
+                            <div className="text-sm text-muted-foreground mt-1">Anos</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl sm:text-4xl font-bold text-foreground">14+</div>
+                            <div className="text-sm text-muted-foreground mt-1">Tecnologias</div>
                         </div>
                     </motion.div>
                 </motion.div>
