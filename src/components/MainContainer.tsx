@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { About } from './about/About';
 import { Contact } from './contact/Contact';
 import { Header } from './home/Header';
@@ -8,8 +10,6 @@ import { SectionBar } from './navigation/SectionBar';
 import { SectionObserver } from './navigation/SectionObserver';
 import { Projects } from './projects/Projects';
 import { Skills } from './skill/Skills';
-import { useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
 
 export const MainContainer = () => {
     useEffect(() => {
@@ -18,26 +18,30 @@ export const MainContainer = () => {
 
     return (
         <AnimatePresence mode="wait">
-            <main className="flex flex-col h-full overflow-hidden">
+            <main className="relative">
+                <Header />
+                
                 <SectionObserver id="home">
-                    <div className="min-h-screen">
-                        <Header />
-                        <Home />
-                    </div>
+                    <Home />
                 </SectionObserver>
+                
                 <SectionObserver id="about">
                     <About />
                 </SectionObserver>
+                
                 <SectionObserver id="projects">
                     <Projects />
                 </SectionObserver>
+                
                 <SectionObserver id="skills">
                     <Skills />
                 </SectionObserver>
-                <SectionBar />
+                
                 <SectionObserver id="contact">
                     <Contact />
                 </SectionObserver>
+
+                <SectionBar />
             </main>
         </AnimatePresence>
     );

@@ -1,33 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
+'use client';
+
 import { useSectionStore } from '@/stores/useSectionStore';
 import { Section } from '@/types/Section';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
-type SectionProps = {
+type Props = {
     id: Section['id'];
     children: React.ReactNode;
 };
 
-export const SectionObserver = ({ id, children }: SectionProps) => {
+export const SectionObserver = ({ id, children }: Props) => {
     const setCurrentSection = useSectionStore((state) => state.setCurrentSection);
     const sectionRef = useRef<HTMLDivElement | null>(null);
-    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setTimeout(() => {
-                    if (entry.isIntersecting) {
-                        setCurrentSection(id);
-                        setIsVisible(true);
-                    } else {
-                        setIsVisible(false);
-                    }
-                }, 100);
+                if (entry.isIntersecting) {
+                    setCurrentSection(id);
+                }
             },
             {
-                threshold: window.innerWidth <= 768 ? 0.1 : [0.2, 1],
-                rootMargin: '0px 0px -20% 0px',
+                threshold: 0.3,
+                rootMargin: '-10% 0px -10% 0px',
             }
         );
 
@@ -43,7 +38,7 @@ export const SectionObserver = ({ id, children }: SectionProps) => {
     }, [id, setCurrentSection]);
 
     return (
-        <section id={id} ref={sectionRef}>
+        <section id={id} ref={sectionRef} className="scroll-mt-20">
             {children}
         </section>
     );

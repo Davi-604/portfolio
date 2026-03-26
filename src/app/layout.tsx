@@ -1,28 +1,37 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Ubuntu } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import Head from 'next/head';
 
-const geistSans = Geist({
-    variable: '--font-geist-sans',
+const inter = Inter({
+    variable: '--font-inter',
     subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
+const jetbrainsMono = JetBrains_Mono({
+    variable: '--font-jetbrains-mono',
     subsets: ['latin'],
-});
-
-const ubuntu = Ubuntu({
-    variable: '--font-ubuntu',
-    subsets: ['latin'],
-    weight: ['300', '400', '500', '700'],
 });
 
 export const metadata: Metadata = {
-    title: 'DaviCarvalho.dev',
-    description: 'Confira o meu portfólio e veja do que eu sou capaz!',
+    title: 'Davi Carvalho | Desenvolvedor Full-Stack',
+    description: 'Desenvolvedor Full-Stack especializado em criar soluções digitais modernas, performáticas e escaláveis. Confira meus projetos e entre em contato.',
+    keywords: ['desenvolvedor', 'full-stack', 'react', 'nextjs', 'typescript', 'portfolio'],
+    authors: [{ name: 'Davi Carvalho' }],
+    openGraph: {
+        title: 'Davi Carvalho | Desenvolvedor Full-Stack',
+        description: 'Desenvolvedor Full-Stack especializado em criar soluções digitais modernas, performáticas e escaláveis.',
+        type: 'website',
+    },
+};
+
+export const viewport: Viewport = {
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+        { media: '(prefers-color-scheme: dark)', color: '#0a0f1c' },
+    ],
+    width: 'device-width',
+    initialScale: 1,
 };
 
 export default function RootLayout({
@@ -31,16 +40,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pt-br">
+        <html lang="pt-br" suppressHydrationWarning>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+                className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased overflow-x-hidden`}
             >
-                <Head>
-                    <link rel="icon" href="/favicon.ico" />
-                </Head>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
+                    defaultTheme="dark"
                     enableSystem
                     disableTransitionOnChange
                 >

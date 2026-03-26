@@ -1,17 +1,12 @@
 'use client';
 
 import { sections } from '@/data/sections';
-import { FaCircle } from 'react-icons/fa';
-import { SectionBarItem } from './SectionBarItem';
 import { useSectionStore } from '@/stores/useSectionStore';
 import { Section } from '@/types/Section';
 import { motion } from 'framer-motion';
-import { slowFadeInRight } from '@/animations/fadeIn';
 
 export const SectionBar = () => {
     const { currentSection, setCurrentSection } = useSectionStore();
-
-    const lastSectionElementIndex: number = sections.length - 1;
 
     const handleScrollToSection = (sectionId: Section['id']) => {
         setCurrentSection(sectionId);
@@ -23,36 +18,55 @@ export const SectionBar = () => {
     };
 
     return (
-        <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={slowFadeInRight}
-            className=" hidden fixed z-50 bottom-4 right-2 text-primary flex-col justify-center lg:flex"
+        <motion.nav
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-3"
+            aria-label="Navegacao por secoes"
         >
-            <div
-                className={`mx-auto transition-all ease-in ${
-                    currentSection === sections[0].id ? 'opacity-100' : 'opacity-40'
-                }`}
-            >
-                <FaCircle />
+            <div className="glass-strong rounded-full py-4 px-2 flex flex-col items-center gap-2">
+                {sections.map((section, index) => {
+                    const isActive = currentSection === section.id;
+                    
+                    return (
+                        <button
+                            key={section.id}
+                            onClick={() => handleScrollToSection(section.id)}
+                            className="group relative p-2"
+                            aria-label={`Ir para ${section.label}`}
+                            aria-current={isActive ? 'true' : undefined}
+                        >
+                            {/* Tooltip */}
+                            <span className="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-card text-foreground text-sm font-medium whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none shadow-lg border border-border">
+                                {section.label}
+                            </span>
+
+                            {/* Dot */}
+                            <motion.span
+                                className={`block rounded-full transition-all duration-300 ${
+                                    isActive 
+                                        ? 'w-3 h-3 bg-primary shadow-lg shadow-primary/50' 
+                                        : 'w-2 h-2 bg-muted-foreground/40 group-hover:bg-muted-foreground'
+                                }`}
+                                layoutId="sectionIndicator"
+                            />
+                        </button>
+                    );
+                })}
             </div>
-            {sections.map((sec, index) => (
-                <SectionBarItem
-                    key={index}
-                    currentSection={currentSection}
-                    onClick={handleScrollToSection}
-                    section={sec}
+
+            {/* Progress indicator */}
+            <div className="h-16 w-px bg-border relative overflow-hidden">
+                <motion.div
+                    className="absolute top-0 left-0 w-full bg-primary"
+                    initial={{ height: '0%' }}
+                    animate={{
+                        height: `${((sections.findIndex(s => s.id === currentSection) + 1) / sections.length) * 100}%`
+                    }}
+                    transition={{ duration: 0.3 }}
                 />
-            ))}
-            <div
-                className={`mx-auto transition-all ease-in ${
-                    currentSection === sections[lastSectionElementIndex].id
-                        ? 'opacity-100'
-                        : 'opacity-40'
-                }`}
-            >
-                <FaCircle />
             </div>
-        </motion.div>
+        </motion.nav>
     );
 };
